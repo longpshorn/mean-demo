@@ -52,14 +52,11 @@ angular.module('clientApp')
 
         // we'll come back to here and fill in more when ready
         request.success(function (data) {
-            // our json response is recognized as
-            // the data parameter here. See? Our msg
-            // value is right there!
-            console.log(data.msg);
+            console.log(data);
         });
 
         request.error(function (data) {
-            console.log(data.msg);
+            console.log(data);
         });
     };
   });
