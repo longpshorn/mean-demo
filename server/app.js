@@ -5,10 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-/**
- * Route Imports
- */
-var signup = require('./routes/signup');
 
 var app = express();
 
@@ -18,6 +14,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+
+/**
+ * Routes
+ */
+var router = require('./router')(app);
+
 
 /**
  * Development Settings
@@ -57,10 +60,5 @@ if (app.get('env') === 'production') {
         });
     });
 }
-
-/**
- * Route
- */
-app.use('/signup', signup);
 
 module.exports = app;
